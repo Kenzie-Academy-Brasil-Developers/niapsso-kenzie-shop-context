@@ -1,18 +1,12 @@
-import { createContext, useContext, useState, useCallback } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // const [currentTheme, setCurrentTheme] = useState("light");
-  // const getOppositeTheme = useCallback(
-  //   () => (currentTheme === "light" ? "dark" : "light"),
-  //   [currentTheme]
-  // );
-  const [theme, setTheme] = useState("light");
-  const getOppositeTheme = useCallback(
-    () => (theme === "light" ? "dark" : "light"),
-    [theme]
+  const [theme, setTheme] = useState(
+    localStorage.getItem("@theme: KenzieShop") || "light"
   );
+  const getOppositeTheme = () => (theme === "light" ? "dark" : "light");
   const changeTheme = () => {
     setTheme(getOppositeTheme());
   };

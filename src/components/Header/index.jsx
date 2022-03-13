@@ -5,9 +5,12 @@ import { IoMdSunny, IoMdMoon } from "react-icons/io";
 import Button from "../Button";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import CartSize from "../CartSize";
+import { useCart } from "../../providers/cart";
 
 const Header = () => {
   const { theme, changeTheme } = useTheme();
+  const { cart } = useCart();
   const history = useHistory();
   const { pathname } = history.location;
   const [buttonText, setButtonText] = useState(
@@ -30,6 +33,13 @@ const Header = () => {
           <IoMdMoon />
         </div>
         <Button onClick={handleDirection}>{buttonText}</Button>
+        <CartSize
+          size={
+            pathname === "/"
+              ? cart.reduce((acc, el) => acc + el.quantidity, 0)
+              : 0
+          }
+        />
       </div>
     </Wrapper>
   );

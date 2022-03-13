@@ -15,11 +15,20 @@ export const Wrapper = styled.header`
     flex-direction: column;
     align-items: center;
     gap: 35px;
+    > button {
+      min-width: 67px;
+    }
   }
   .toggle-container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
+  }
+  @media (min-width: 800px) {
+    padding: 20px 20%;
+    h1 {
+      max-width: max-content;
+    }
   }
 `;

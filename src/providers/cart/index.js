@@ -8,13 +8,41 @@ export const CartProvider = ({ children }) => {
     return shopCart ? JSON.parse(shopCart) : [];
   });
   const addToCart = (item) => {
-    setCart([...cart, item]);
-    localStorage.setItem("@shopCart: KenzieShop", JSON.stringify(cart));
+    if (cart.length === 0 || !cart.find(({ id }) => id === item.id)) {
+      item.quantidity = 1;
+      item.totalValue = item.value;
+      setCart([...cart, item]);
+      localStorage.setItem("@shopCart: KenzieShop", JSON.stringify(cart));
+    } else {
+      const newCart = cart.map((product) => {
+        if (product.id === item.id) {
+          product.quantidity++;
+          product.totalValue = product.quantidity * product.value;
+        }
+        return product;
+      });
+      setCart(newCart);
+      localStorage.setItem("@shopCart: KenzieShop", JSON.stringify(newCart));
+    }
   };
   const removeFromCart = (item) => {
-    const index = cart.findIndex(({ id }) => id === item.id);
-    setCart(cart.filter((_, i) => i !== index));
-    localStorage.setItem("@shopCart: KenzieShop", JSON.stringify(cart));
+    const itemInCart = cart.find(({ id }) => id === item.id);
+    if (itemInCart.quantidity > 1) {
+      const newCart = cart.map((product) => {
+        if (product.id === item.id) {
+          product.quantidity--;
+          product.totalValue = product.quantidity * product.value;
+        }
+        return product;
+      });
+      setCart(newCart);
+      localStorage.setItem("@shopCart: KenzieShop", JSON.stringify(newCart));
+    } else {
+      const index = cart.findIndex(({ id }) => id === item.id);
+      const newCart = cart.filter((_, i) => i !== index);
+      setCart(newCart);
+      localStorage.setItem("@shopCart: KenzieShop", JSON.stringify(newCart));
+    }
   };
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>

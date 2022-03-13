@@ -1,13 +1,15 @@
 import { Route, Switch } from "react-router-dom";
+import Cart from "../pages/Cart";
+import Home from "../pages/Home";
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <div>home</div>
+        <Home />
       </Route>
       <Route path="/cart">
-        <div>cart</div>
+        <Cart />
       </Route>
     </Switch>
   );

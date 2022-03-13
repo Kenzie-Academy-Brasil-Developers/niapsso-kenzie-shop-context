@@ -9,7 +9,7 @@ import { useEffect } from "react";
 function App() {
   const { theme } = useTheme();
   useEffect(() => {
-    localStorage.setItem("@theme: KenzieShop", theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
   return (
     <ThemeProvider theme={themes[theme]}>

@@ -1,15 +1,15 @@
 const light = {
-  backgroundColor: "#F8F8FF",
-  color: "#343434",
-  header: {},
-  button: {},
+  backgroundColor: "#fbfbfe",
+  color: "#15141a",
+  header: { backgroundColor: "#000000", color: "#fbfbfe" },
+  button: { backgroundColor: "#cccccc", color: "#000000" },
 };
 
 const dark = {
-  backgroundColor: "#343434",
-  color: "#F8F8FF",
-  header: {},
-  button: {},
+  backgroundColor: "#15141a",
+  color: "#fbfbfe",
+  header: { backgroundColor: "#000000", color: "#fbfbfe" },
+  button: { backgroundColor: "#2196f3", color: "#000000" },
 };
 
 export const themes = { light, dark };

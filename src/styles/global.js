@@ -27,5 +27,7 @@ export default createGlobalStyle`
     --title-1: 1rem;
     --title-2: 0.75rem;
     --title-3: 0.5rem;
+    --dark-color: "#fbfbfe";
+    --light-color: "#15141a";
   }
 `;

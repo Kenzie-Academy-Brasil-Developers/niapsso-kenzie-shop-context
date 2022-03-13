@@ -3,9 +3,7 @@ import { createContext, useContext, useState } from "react";
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("@theme: KenzieShop") || "light"
-  );
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const getOppositeTheme = () => (theme === "light" ? "dark" : "light");
   const changeTheme = () => {
     setTheme(getOppositeTheme());

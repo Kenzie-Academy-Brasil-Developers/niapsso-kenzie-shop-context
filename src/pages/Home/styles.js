@@ -20,7 +20,7 @@ export const Content = styled.ul`
   @media (min-width: 950px) {
     flex-flow: row wrap;
     flex: 1;
-    max-height: 800px;
+    max-height: 750px;
     max-width: 1000px;
   }
 `;

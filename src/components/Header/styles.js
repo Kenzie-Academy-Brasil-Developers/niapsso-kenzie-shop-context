@@ -7,6 +7,7 @@ export const Wrapper = styled.header`
   padding: 10px;
   background-color: ${({ theme }) => theme.header.backgroundColor};
   color: ${({ theme }) => theme.header.color};
+  position: sticky;
   h1 {
     max-width: 100px;
   }
